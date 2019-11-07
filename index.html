@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+            //FUNCTION THAT CHOOSES ROCK PAPER OR SCISSOR FOR THE COMPUTER AT RANDOM
+            function computerPlay() {
+           const randNum =  Math.floor(Math.random() * 3);
+            if (randNum == 0) {
+                return 'ROCK';
+            } else if (randNum == 1){
+                return 'PAPER';
+            } else {
+               return 'SCISSORS';
+            }
+        };
+
+            //PLAYS ONE ROUND OF RPS AGAINST PLAYER SELECTION FROM INPUT
+        function singleRound (playerSelection, computerSelection) {
+            // TIE
+            if (playerSelection == computerSelection) {
+                return ('Tie!');
+
+            }
+            // LOSING SCENARIOS
+            else if (playerSelection == 'ROCK' && computerSelection == 'PAPER' || playerSelection == 'SCISSORS' && computerSelection == 'ROCK' || playerSelection == 'PAPER' && computerSelection == 'SCISSORS') {
+                return ('your ' + playerSelection + ' loses to computers ' + computerSelection + ' you lose this round!');
+                // console.log(computerScore++);
+
+            }
+             //WINNING SCENARIOS
+            else //(playerSelection == 'ROCK' && computerSelection == 'SCISSORS' || playerSelection == 'PAPER' && computerSelection == 'ROCK' || playerSelection == 'SCISSORS' && computerSelection == 'PAPER') ;
+                return ('your ' + playerSelection + ' beats computers ' + computerSelection + ' you win this round!')
+                // console.log(playerscore++)
+
+            };
+
+                //PROMPTING AN INPUT FROM THE HUMAN PLAYER AND CONVERTING THE INPUT TO ALL UPPERCASE
+                // const playerSelection = prompt('rock, paper, or scissors?').toUpperCase();
+
+                // const computerSelection = computerPlay()
+                // console.log(singleRound(playerSelection, computerSelection));
+
+
+        // singleRound ()
+
+            //KEEPS SCORE OF 5 ROUNDS OF RPS OF PLAYER VERSUS COMPUTER
+            function game() {
+
+                score = [0, 0, 0]
+
+                for (i=0; i < 5; i++){
+                    const playerSelection = prompt('rock paper or scissors?', ).toUpperCase();
+                    const computerSelection = computerPlay();
+
+                    singleRound(playerSelection, computerSelection);
+                        // IF TIE THEN 3RD ITEM IN SCORE AWAY GOES UP 1
+                    if (singleRound(playerSelection, computerSelection) === 'Tie!') {
+                        score[2] += 1
+                        alert('TIE!')
+                        alert(score)
+                    }else if (singleRound(playerSelection, computerSelection) === 'your ' + playerSelection + ' beats computers ' + computerSelection + ' you win this round!'){
+                        //IF YOU WIN THE FIRST ITEM IN SCORE ARAY GOES UP BY 1
+                        score[0] += 1
+                        alert ('you win!')
+                        alert (score)
+                    }else {
+                        //IF YOU LOSE THE 2ND ITEM IN SCORE ARRAY GOES UP BY 1
+                        score[1] += 1
+                        alert ('you lose')
+                        alert (score)
+                    }
+                }
+                        //IF FIRST ITEM IN ARRAY GETS TO 3, ALERT THAT YOU WIN GAME
+                if (score[0] > 2) {
+                    alert (`you won! ${score}`)
+                        //IF SECOND ITEMS IN ARRAY GETS TO 2 ALERT THAT YOU LOST GAME
+                }else if (score[1] > 2) {
+                    alert(`you lost! ${score}`)
+                        //IF 1ST AND 2ND ITEMS IN ARRAY ARE EQUAL AND 3RD ITEM IN ARRAY
+                        //HAS REACHED 5, THEN IT IS A TIE
+                }else if (score[0] == score[1] || scoreboard[2] == 5){
+                    alert(`you tied! ${score}`)
+                }else {
+
+                }
+            };
+
+        game();
+    </script>
+</body>
+</html>
